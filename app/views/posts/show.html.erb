@@ -1,0 +1,18 @@
+<h1><%= @post.title %></h1>
+<h3><%= link_to(@post.url) if @post.url %></h3>
+<p><%= @post.content if @post.content %></p>
+<ul>
+  <% @post.subs.each do |sub| %>
+    <li><%= link_to(sub.title, sub_url(sub)) %></li>
+  <% end %>
+</ul>
+<% if user_is_creator?(@post, :author_id)%>
+  <%= link_to "Edit", edit_post_url(@post) %>
+  <%= button_to "Delete", { action: "destroy", id: @post.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+<%end%>
+<% if @post.comments %>
+  <h2>Comments</h2>
+  <%= render @post.comments %>
+<% end %>
+
+<%= render 'comments/form', comment: Comment.new, parent_comment_id: nil, post_id: @post.id %>
