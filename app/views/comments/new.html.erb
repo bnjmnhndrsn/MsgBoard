@@ -1,0 +1,6 @@
+<h1>Write a comment!
+<%= render 'comments/form', 
+	comment: Comment.new, 
+	parent_comment_id: params[:parent_comment_id], 
+	post_id: params[:post_id] 
+%>

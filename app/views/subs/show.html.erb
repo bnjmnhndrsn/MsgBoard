@@ -1,6 +1,12 @@
 <h1><%= @sub.title %></h1>
-<p><%= @sub.description %></p>
 <% if user_is_creator?(@sub, :moderator_id)%>
   <%= link_to "Edit", edit_sub_url(@sub) %>
   <%= button_to "Delete", { action: "destroy", id: @sub.id }, method: :delete, data: { confirm: "Are you sure?" } %>
 <%end%>
+<h3><%= @sub.description %></h3>
+<h2>Posts</h2>
+<ul>
+	<%= render @sub.posts %>
+</ul>
+
+

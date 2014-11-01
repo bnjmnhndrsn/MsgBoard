@@ -2,10 +2,10 @@
 	<%= f.text_field :title, placeholder: 'title' %>
 	<%= f.text_field :url, placeholder: 'url' %>
 	<%= f.text_area :content, placeholder: 'content' %>
-	<%= hidden_field_tag 'post[subs_id][]', "" %>
+	<%= hidden_field_tag 'post[sub_ids][]', "" %>
 	<% Sub.all.each do |sub| %>
 		<%= label_tag "post_subs_id_#{sub.id}", sub.title %>
-		<%= check_box_tag 'post[subs_id][]', sub.id,
+		<%= check_box_tag 'post[sub_ids][]', sub.id,
 		 	post.sub_ids.include?(sub.id), id: "post_subs_id_#{sub.id}"
 		%>
 	<% end %>
