@@ -1,4 +1,7 @@
 class Comment < ActiveRecord::Base
+  
+  include Votable
+  
   validates :content, :author, :post, presence: true
   belongs_to :post
   belongs_to :author, class_name: "User"
@@ -8,5 +11,9 @@ class Comment < ActiveRecord::Base
     class_name: "Comment",
     foreign_key: :parent_comment_id
   )
+  
+  def child_comments_by_parent_id
+    Post.find(self.post_id).comments_by_parent_id
+  end
   
 end

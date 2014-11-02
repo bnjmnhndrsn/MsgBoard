@@ -1,9 +1,12 @@
 <h2>By <%= @comment.author.username %></h2>
 <p><%= @comment.content %></p>
-<h3>Responses</h3>
-<%= render @comment.child_comments %>
+<% comments_hash = @comment.child_comments_by_parent_id %>
+<% if comments_hash %>
+	<h3>Responses</h3>
+	<%= render comments_hash[@comment.id], comments_hash: comments_hash %>
+<% end %>
 <%= render 'comments/form', 
   comment: Comment.new,
   parent_comment_id: @comment.id,
-  post_id: @comment.post_ids
+  post_id: @comment.post_id
 %>

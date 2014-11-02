@@ -22,14 +22,8 @@ class ApplicationController < ActionController::Base
   end
   
   def user_is_creator?(object, id_name)
-    current_user.id == object.send(id_name)
+    user = current_user
+    user ? (current_user.id == object.send(id_name)) : false
   end
-  
-  # def require_user_is_creator(object, id_name)
-  #   unless user_is_creator?(object, id-name)
-  #     render status: :forbidden, text: "Forbidden fruit"
-  #     return
-  #   end
-  # end
   
 end

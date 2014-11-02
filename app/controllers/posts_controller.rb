@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include VotableActions
   
   before_action :require_login, except: :show
   

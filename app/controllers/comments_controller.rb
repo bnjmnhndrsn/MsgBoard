@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+  include VotableActions
+  
+  before_action :require_login, except: :show
+  
   def show
     @comment = Comment.find(params[:id])
     render :show

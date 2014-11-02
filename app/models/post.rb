@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  
+  include Votable
+  
   validates :title, :author, presence: true
   
   belongs_to :author, 
@@ -21,7 +24,9 @@ class Post < ActiveRecord::Base
   def comments_by_parent_id
     ret = Hash.new { [] }
     
-    self.comments.each do |comment|
+    comments = Comment.order_by_score.where("comments.post_id = ?", self.id)
+    
+    comments.each do |comment|
       ret[comment.parent_comment_id] += [comment]
     end
     
