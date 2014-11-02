@@ -11,17 +11,12 @@ module VotableActions
   
   private
     def find_votable
-      params.each do |name, value|
-        if name =~ /(.+)_id$/
-          return $1.classify.constantize.find(value)
-        end
-      end
-      nil
+      params[:controller].classify.constantize.find(params[:id])
     end
     
     def vote(value)
       @votable = find_votable
       @votable.votes.create(value: value, user: current_user)
-      redirect_to @votable
+      redirect_to request.referrer
     end
 end

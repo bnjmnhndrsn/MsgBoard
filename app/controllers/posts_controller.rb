@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
-  include VotableActions
+ include VotableActions
   
   before_action :require_login, except: :show
+  
   
   def new
     @post = Post.new

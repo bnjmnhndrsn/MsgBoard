@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   resources :subs
   resources :posts, except: [:index, :upvote, :downvote] do
     resources :comments, only: :new
-    match "/upvote", to: "posts#upvote", via: 'get'
-    match "/downvote", to: "posts#downvote", via: 'get'
+    post "upvote", on: :member
+    post "downvote", on: :member
   end
   resources :comments, only: [:show, :create, :destroy] do
-    match "/upvote", to: "comments#upvote", via: 'get'
-    match "/downvote", to: "comments#downvote", via: 'get'
+    post "upvote", on: :member
+    post "downvote", on: :member
   end
   
 end

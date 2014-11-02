@@ -1,1 +1,6 @@
-<li><%= link_to(post.title, post_url(post)) %></li>
+<li>
+	<%= link_to(post.title, post_url(post)) %>,
+	<%= post.score %>
+	<%= button_to "Up", upvote_post_path(post) %>
+	<%= button_to "Down", downvote_post_path(post) %>
+</li>

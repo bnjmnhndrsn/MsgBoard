@@ -17,10 +17,10 @@ class CommentsController < ApplicationController
     @comment.author_id = current_user.id
     post_id = params[:comment][:post_id]
     if @comment.save
-      redirect_to post_url(post_id)
+      redirect_to request.referrer
     else
       flash[:errors] = @comment.errors
-      redirect_to post_url(post_id)
+      redirect_to request.referrer
     end
   end
 
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     comment = Comment.find(:id)
     post_id = comment.post_id
     comment.destroy
-    redirect_to post_url(post_id)
+    redirect_to request.referrer
   end
 
   def comment_params

@@ -3,11 +3,15 @@
 		<div>
 			<%= comment.author.username %>,
 			<%= distance_of_time_in_words_to_now(comment.created_at) %>
+			score: <%= comment.score %>
+			<%= button_to "Up", upvote_comment_path(comment) %>
+			<%= button_to "Down", downvote_comment_path(comment) %>
 		</div>
 		<div>
 			<%= comment.content %>
 		</div>
 		<div>
+			<%= link_to "Permalink", comment_url(comment.id) %>
 			<%= link_to "reply", new_post_comment_url(comment.post_id, parent_comment_id: comment.id) %>
 		</div>
 		<ul>

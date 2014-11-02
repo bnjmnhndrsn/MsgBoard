@@ -3,7 +3,7 @@
 <p><%= @post.content if @post.content %></p>
 <h4>Posted to: 
   <%= @post.subs.map { |sub| link_to(sub.title, sub_url(sub)) }.join(", ").html_safe %>
-</h4>
+</h4>	
 <% if user_is_creator?(@post, :author_id)%>
   <%= link_to "Edit", edit_post_url(@post) %>
   <%= button_to "Delete", { action: "destroy", id: @post.id }, method: :delete, data: { confirm: "Are you sure?" } %>

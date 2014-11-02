@@ -22,7 +22,7 @@ module Votable
       self
         .joins(join)
         .group("#{table}.id")
-        .order("SUM(votes.value) DESC")
+        .order("SUM(COALESCE(votes.value, 0)) DESC")
     end
   end
   
