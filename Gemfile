@@ -31,6 +31,7 @@ gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'rails-pry'
+gem 'bootstrap-sass'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
