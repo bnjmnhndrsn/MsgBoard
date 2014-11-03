@@ -19,7 +19,21 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to params[:comment][:redirect]
     else
-      flash[:errors] = @comment.errors
+      flash[:errors] = @comment.errors.full_messages
+      redirect_to request.referrer
+    end
+  end
+  
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+  
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to params[:comment][:redirect]
+    else
+      flash[:errors] = @comment.errors.full_messages
       redirect_to request.referrer
     end
   end

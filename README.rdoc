@@ -1,3 +1,11 @@
-== README
+# README
 
-MsgBoard is a message board client modeled after Reddit, featuring a variety of subforums, nested posts and up/downvoting. I began it to learn the finer points of Rails architecture, and it features a Rails backend with Bootsrap on the front end.
+MsgBoard is a message board client modeled after Reddit, featuring a variety of subforums, nested posts and up/downvoting. I began it to learn the finer points of Rails and Bootstrap. It features a Rails backend with Bootsrap on the front end.
+
+## To-do List:
+- unify grid and create DRY helpers for it
+- increase preventions to only allow editing of authorized resources
+- fix ordering of posts on sub pages
+- scroll to comment after new post
+- create views by both votes and by most recent
+- fix bug in links to exterior urls on posts

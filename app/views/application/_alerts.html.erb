@@ -1,0 +1,12 @@
+<div class="col-xs-6 col-xs-offset-4">
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<%= content_tag("div", error, class: "alert alert-danger") %>
+		<% end %>
+	<% end %>
+	<% if flash[:successes] %>
+		<% flash[:successes].each do |success| %>
+			<%= content_tag("div", success, class: "alert alert-success") %>
+		<% end %>
+	<% end %>
+</div>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post "downvote", on: :member
   end
   
-  resources :comments, only: [:show, :create, :destroy] do
+  resources :comments, only: [:show, :create, :destroy, :edit, :update] do
     post "upvote", on: :member
     post "downvote", on: :member
   end
