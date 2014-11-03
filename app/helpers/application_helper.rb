@@ -47,4 +47,10 @@ module ApplicationHelper
     (content_tag("div", edit_link, class: "btn-group") + destroy_link).html_safe
   end
   
+  def default_grid(&blk)
+    content_tag("div", class: "row") do
+      content_tag("div", class: "col-xs-6 col-xs-offset-3", &blk)
+    end
+  end
+  
 end

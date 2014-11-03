@@ -1,28 +1,26 @@
-<div class="row">
-	<div class="col-xs-6 col-xs-offset-4">
-		<h1><%= header %></h1>
-		<%= form_for post do |f| %>
-			<div class="form-group">
-				<%= f.text_field :title, placeholder: 'Title', class: "form-control" %>
-			</div>
-			<div class="form-group">
-				<%= f.text_field :url, placeholder: 'Url', class: "form-control" %>
-			</div>
-			<div class="form-group">
-				<%= f.text_area :content, placeholder: 'Your post...', class: "form-control" %>
-			</div>
-			<%= hidden_field_tag 'post[sub_ids][]', "" %>
-			<div class="form-group">
-				<% Sub.all.each do |sub| %>
-					<label class="checkbox-inline">
-					<%= check_box_tag 'post[sub_ids][]', sub.id,
-					 	post.sub_ids.include?(sub.id), id: "post_subs_id_#{sub.id}" %><%= sub.title %>
-					</label>
-				<% end %>
-			</div>
-			<div>
-				<%= f.submit "Submit", class: "btn btn-primary" %>
-			</div>
-		<% end %>
-	</div>
-</div>
+<%= default_grid do %>
+	<h1><%= header %></h1>
+	<%= form_for post do |f| %>
+		<div class="form-group">
+			<%= f.text_field :title, placeholder: 'Title', class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.text_field :url, placeholder: 'Url', class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.text_area :content, placeholder: 'Your post...', class: "form-control" %>
+		</div>
+		<%= hidden_field_tag 'post[sub_ids][]', "" %>
+		<div class="form-group">
+			<% Sub.all.each do |sub| %>
+				<label class="checkbox-inline">
+				<%= check_box_tag 'post[sub_ids][]', sub.id,
+				 	post.sub_ids.include?(sub.id), id: "post_subs_id_#{sub.id}" %><%= sub.title %>
+				</label>
+			<% end %>
+		</div>
+		<div>
+			<%= f.submit "Submit", class: "btn btn-primary" %>
+		</div>
+	<% end %>
+<% end %>

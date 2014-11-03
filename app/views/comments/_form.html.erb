@@ -1,5 +1,4 @@
-<div class="row">
-	<div class="col-xs-6">
+<% default_grid do %>
 		<h4>Add a comment!</h4>
 		<%= form_for comment do |f| %>
 			<%= f.hidden_field :parent_comment_id, value: parent_comment_id %>
@@ -13,4 +12,4 @@
 			</div>
 		<% end %>
 	</div>
-</di>
+<% end %>
