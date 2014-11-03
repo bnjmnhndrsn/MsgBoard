@@ -1,6 +1,8 @@
-<h1>All Subs</h1>
-<ul>
+<h1>All the Subs</h1>
 <% @subs.each do |sub| %>
-  <li><%= link_to sub.title, sub_url(sub) %></li>
+  <div class="media">
+	  <div class="media-body">
+	  <h4><%= link_to sub.title, sub_url(sub) %></h4>
+	  <p><%= sub.description %></p>
+  </div>
 <% end %>
-</ul>

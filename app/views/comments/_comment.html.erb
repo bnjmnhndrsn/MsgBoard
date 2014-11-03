@@ -1,4 +1,4 @@
-<%= content_tag "div", class: "media" do %>
+<%= content_tag "div", id: comment.id, class: "media" do %>
 		<h4><%= comment.author.username %>, <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</h4>
 		<div class="media-left">
 			<%= vote_badge(comment) %>

@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    redirect_to subs_path unless user_is_creator?(@post, :author_id)
+    redirect_to subs_path unless user_is_creator?(post, :author_id)
     post.destroy
     redirect_to subs_url
   end
