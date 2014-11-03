@@ -1,17 +1,25 @@
-<h1><%= @post.title %></h1>
-<h3><%= link_to(@post.url) if @post.url %></h3>
-<p><%= @post.content if @post.content %></p>
-<h4>Posted to: 
-  <%= @post.subs.map { |sub| link_to(sub.title, sub_url(sub)) }.join(", ").html_safe %>
-</h4>	
-<% if user_is_creator?(@post, :author_id)%>
-  <%= link_to "Edit", edit_post_url(@post) %>
-  <%= button_to "Delete", { action: "destroy", id: @post.id }, method: :delete, data: { confirm: "Are you sure?" } %>
-<%end%>
+<div class="row">
+	<div class="col-xs-6">
+		<h1><%= @post.title %></h1>
+		<h3><%= link_to(@post.url) if @post.url %></h3>
+		<p><%= @post.content if @post.content %></p>
+		<h4>Posted to: 
+		  <%= @post.subs.map { |sub| link_to(sub.title, sub_url(sub)) }.join(", ").html_safe %>
+		</h4>	
+		<% if user_is_creator?(@post, :author_id)%>
+		  <%= link_to "Edit", edit_post_url(@post) %>
+		  <%= button_to "Delete", { action: "destroy", id: @post.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+	<%end%>
+	</div>
+</div>
 <% comments_hash = @post.comments_by_parent_id %>
 <% unless comments_hash.empty? %>
-  <h2>Comments</h2>
-  <%= render comments_hash[nil], comments_hash: comments_hash %>
+	<div class="row">
+		<div class="col-xs-12">
+	  	  <h2>Comments</h2>
+		  <%= render comments_hash[nil], comments_hash: comments_hash %>
+	  </div>
+  </div>
 <% end %>
-
-<%= render 'comments/form', comment: Comment.new, parent_comment_id: nil, post_id: @post.id %>
+	
+<%= render 'comments/form', comment: Comment.new, parent_comment_id: nil, post_id: @post.id, redirect: request.url %>

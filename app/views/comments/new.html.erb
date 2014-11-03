@@ -2,5 +2,6 @@
 <%= render 'comments/form', 
 	comment: Comment.new, 
 	parent_comment_id: params[:parent_comment_id], 
+	redirect: params[:redirect],
 	post_id: params[:post_id] 
 %>

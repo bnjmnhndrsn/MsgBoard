@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     @comment.author_id = current_user.id
     post_id = params[:comment][:post_id]
     if @comment.save
-      redirect_to request.referrer
+      redirect_to params[:comment][:redirect]
     else
       flash[:errors] = @comment.errors
       redirect_to request.referrer

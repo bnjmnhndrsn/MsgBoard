@@ -1,21 +1,17 @@
-<li>
-	<div>
-		<div>
-			<%= comment.author.username %>,
-			<%= distance_of_time_in_words_to_now(comment.created_at) %>
-			score: <%= comment.score %>
-			<%= button_to "Up", upvote_comment_path(comment) %>
-			<%= button_to "Down", downvote_comment_path(comment) %>
+<%= content_tag "div", class: "media" do %>
+		<h4><%= comment.author.username %>, <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</h4>
+		<div class="media-left">
+			<%= vote_badge(comment) %>
 		</div>
-		<div>
-			<%= comment.content %>
-		</div>
-		<div>
-			<%= link_to "Permalink", comment_url(comment.id) %>
-			<%= link_to "reply", new_post_comment_url(comment.post_id, parent_comment_id: comment.id) %>
-		</div>
-		<ul>
-			<%= render comments_hash[comment.id], comments_hash: comments_hash %>
-		</ul>
+		<div class="media-body">
+		<%= comment.content %>
+		<br>
+		<%= link_to "Permalink", comment_url(comment.id) %>
+		<%= link_to "Reply", new_post_comment_url(comment.post_id, parent_comment_id: comment.id, redirect: request.url) %>
+		<% unless comments_hash[comment.id].nil? %>
+			<div class="nested-comment">
+				<%= render comments_hash[comment.id], comments_hash: comments_hash %>
+			</div>
+		<% end %>
 	</div>
-</li>
+<% end %>

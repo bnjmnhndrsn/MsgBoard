@@ -1,6 +1,9 @@
-<li>
-	<%= link_to(post.title, post_url(post)) %>,
-	<%= post.score %>
-	<%= button_to "Up", upvote_post_path(post) %>
-	<%= button_to "Down", downvote_post_path(post) %>
-</li>
+<div class="media">
+	<div class="media-left media-middle">
+		<%= vote_badge(post) %>
+	</div>
+	<div class="media-body">
+		<h4><%= link_to(post.title, post_url(post)) %></h4>
+		<p><%= post.content %></p>
+	</div>
+</div>

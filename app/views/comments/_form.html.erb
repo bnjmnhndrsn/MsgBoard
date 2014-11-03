@@ -1,7 +1,16 @@
-<h4>Add a comment!</h4>
-<%= form_for comment do |f| %>
-	<%= f.hidden_field :parent_comment_id, value: parent_comment_id %>
-	<%= f.hidden_field :post_id, value: post_id %>
-	<%= f.text_area :content %>
-	<%= f.submit "Submit" %>
-<% end %>
+<div class="row">
+	<div class="col-xs-4">
+		<h4>Add a comment!</h4>
+		<%= form_for comment do |f| %>
+			<%= f.hidden_field :parent_comment_id, value: parent_comment_id %>
+			<%= f.hidden_field :redirect, value: redirect %>
+			<%= f.hidden_field :post_id, value: post_id %>
+			<div class="form-group"> 
+				<%= f.text_area :content, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.submit "Submit", class: "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+</di>
